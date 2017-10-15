@@ -47,6 +47,10 @@ class MessageController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Message has been send!'
+            );
 
             return $this->redirectToRoute('message_show', array('id' => $message->getId()));
         }
@@ -146,5 +150,16 @@ class MessageController extends Controller
          $em->flush();
 
          return $this->redirect($this->generateUrl('message_show', array('id' => $id)));
+     }
+
+    /**
+     * @Route("/showUnread/", name="showUnread")
+     */
+     public function showUnreadMessages() {
+         $em = $this->getDoctrine()->getManager();
+         $messages = $em->getRepository('ContactFormBundle:Message')->findUnreadMessages();
+         return $this->render('ContactFormBundle::message/index.html.twig', array(
+             'messages' => $messages,
+         ));
      }
 }

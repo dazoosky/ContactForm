@@ -12,11 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class MessageRepository extends EntityRepository
 {
-    public function changeStatus($id)
+    public function findUnreadMessages()
     {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT p FROM WorkshopBundle:workorder p WHERE p.status = :status')->setParameter('status', $status)
-            ->getResult();
+                'SELECT p FROM ContactFormBundle:Message p WHERE p.readStatus = FALSE')->getResult();
     }
 }

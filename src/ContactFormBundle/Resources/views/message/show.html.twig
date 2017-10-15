@@ -2,7 +2,11 @@
 
 {% block midCol %}
     <h1>Message</h1>
-
+    {% for flash_message in app.session.flashBag.get('notice') %}
+        <div class="alert alert-success">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
     <table class="table table-stiped">
         <tbody>
             <tr>
