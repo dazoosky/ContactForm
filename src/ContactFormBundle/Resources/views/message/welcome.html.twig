@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block midCol %}
+    <h1>Welcome</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('message_new') }}">Contact form</a>
+        </li>
+        <li>
+            <a href="{{ path('message_index') }}">Show all messages</a>
+        </li>
+    </ul>
+{% endblock %}

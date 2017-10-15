@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>Messages list</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Sent date</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Phoneno</th>
+                <th>Text</th>
+                <th>Read?</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{% if message.date %}{{ message.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ message.name }}</td>
+                <td>{{ message.surname }}</td>
+                <td>{{ message.email }}</td>
+                <td>{{ message.phoneno }}</td>
+                <td>{{ message.text }}</td>
+                <td>{% if message.readStatus %}Yes{% else %}No{% endif %}</td>
+                <td><a href="{{ path('message_show', { 'id': message.id }) }}">Show</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+{% endblock %}
