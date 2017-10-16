@@ -62,6 +62,10 @@ class Message
 
     /**
      * @var string
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      *
      * @ORM\Column(name="email", type="string", length=255)
      */

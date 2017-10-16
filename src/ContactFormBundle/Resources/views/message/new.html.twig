@@ -7,18 +7,30 @@
         <div class="form-group">
             <label>Name:</label><br>
             {{ form_widget(form.name, {'attr': {'class': 'form-control'}} ) }}
+            {% if form_errors(form.name) != null %}
+                <div class="alert alert-danger">{{ form_errors(form.name) }}</div>
+            {% endif %}
         </div>
         <div class="form-group">
             <label>Surname:</label><br>
             {{ form_widget(form.surname, {'attr': {'class': 'form-control'}} ) }}
+            {% if form_errors(form.surname) != null %}
+                <div class="alert alert-danger">{{ form_errors(form.surname) }}</div>
+            {% endif %}
         </div>
         <div class="form-group">
             <label>E-mail:</label><br>
             {{ form_widget(form.email, {'attr': {'class': 'form-control'}} ) }}
+            {% if form_errors(form.email) != null %}
+            <div class="alert alert-danger">{{ form_errors(form.email) }}</div>
+            {% endif %}
         </div>
         <div class="form-group">
             <label>Phone number (optional):</label><br>
             {{ form_widget(form.phoneno, {'attr': {'class': 'form-control'}} ) }}
+            {% if form_errors(form.phoneno) != null %}
+                <div class="alert alert-danger">{{ form_errors(form.phoneno) }}</div>
+            {% endif %}
         </div>
         <div class="form-group">
             <label>Topic:</label><br>
@@ -27,6 +39,9 @@
         <div class="form-group">
             <label>Text:</label><br>
             {{ form_widget(form.text, {'attr': {'class': 'form-control'}} ) }}
+            {% if form_errors(form.text) != null %}
+                <div class="alert alert-danger">{{ form_errors(form.text    ) }}</div>
+            {% endif %}
         </div>
 
         <div class="row">
